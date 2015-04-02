@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   
   get '/signin' => 'sessions#signin'
   resources :sessions
+  get '/signout' => 'sessions#destroy'
   
   get '/home' => 'gifs#home'
   root :to => 'gifs#home'

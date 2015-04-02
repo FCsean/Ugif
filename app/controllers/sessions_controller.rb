@@ -6,13 +6,13 @@ class SessionsController < ApplicationController
 
   def create
     user = User.authenticate(params[:username], params[:password])
-    p params[:remember_me]
     if user
       session[:user_id] = user.id
-      if params[:remember_me] == 1
+      if params[:remember_me] == '1'
         session[:expires_after] = Time.now + 2.weeks
       else
         session[:expires_after] = Time.now + 6.hours
+      end
       redirect_to root_url, :notice => "Logged in!"
     else
       flash.now.alert = "Invalid username or password"
