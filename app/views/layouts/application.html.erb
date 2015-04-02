@@ -32,7 +32,36 @@
 
   </header>
   </div>
-<%= yield %>
+  
+<% if ["gifs"].include?(params[:controller]) %>
+<div class="regular-layout container">
 
+  <nav>
+    <ul>
+      <li><a href="home.html">Recommended</a></li>
+      <% if @current_user %>
+      <li><a href="account.html">My Account</a></li>
+      <li><a href="upload.html">Upload Gif</a></li>
+      <li><a href="signout">Sign Out</a></li>
+      <% end %>
+    </ul>
+  </nav>
+
+  <aside>
+    <h3>Sponsors</h3>
+    <div class="ad">
+      <img src="assets/ad.png">
+      <p>Lorem ipsum</p>
+    </div>
+    <div class="ad">
+      <img src="assets/ad.png">
+      <p>Lorem ipsum</p>
+    </div>
+  </aside>
+<%= yield %>
+</div>
+<% else %>
+<%= yield %>
+<% end %>
 </body>
 </html>
