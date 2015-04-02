@@ -1,0 +1,33 @@
+<div class="content">
+
+  <h1>View User Profile</h1>
+  <h2><%= @user.username %></h2>
+  
+  <% @user.gifs.each{ |gif| %>
+  <div class="preview">
+    
+    <a href="/view/<%= gif.id %>">
+      <h2 class="title"><%= gif.title %></h2>
+      <div class="gif"><img src="<%= gif.gif.url %>"></div>
+    </a>
+
+    <div class="details">
+
+      <div class="author">
+        <img> 
+        <span><%= @user.username%></span>
+        <a href="/account/<%= @user.username %>">View Profile</a>
+      </div>
+
+      <div class="stats">
+        <div class="view-count"><%= gif.views %></div>
+        <span class="upvotes">34</span>
+        <span class="downvotes">2</span>
+      </div>
+
+    </div>
+  </div>
+  <% } %>
+
+</div>
+

@@ -13,7 +13,7 @@
   <header>
 
     <div class="branding">
-      <a href="home"><img src="/assets/logo.png"></a>
+      <a href="/home"><img src="/assets/logo.png"></a>
     </div>
 
     <div class="action-bar">
@@ -24,16 +24,16 @@
       </form>
       <% current_user %>
       <% if @current_user %>
-      <a href="account">Hello, <strong><%= @current_user.username =%>!</strong></a>
+      <a href="/account/<%= @current_user.username =%>">Hello, <strong><%= @current_user.username =%>!</strong></a>
       <% else %>
-      <a href="signin">Hello, <strong>Guest!</strong></a>
+      <a href="/signin">Hello, <strong>Guest!</strong></a>
       <% end %>
     </div>
 
   </header>
   </div>
   
-<% if ["gifs"].include?(params[:controller]) %>
+<% if ["gifs","accounts"].include?(params[:controller]) %>
 <div class="regular-layout container">
 
   <nav>
@@ -50,11 +50,11 @@
   <aside>
     <h3>Sponsors</h3>
     <div class="ad">
-      <img src="assets/ad.png">
+      <img src="/assets/ad.png">
       <p>Lorem ipsum</p>
     </div>
     <div class="ad">
-      <img src="assets/ad.png">
+      <img src="/assets/ad.png">
       <p>Lorem ipsum</p>
     </div>
   </aside>

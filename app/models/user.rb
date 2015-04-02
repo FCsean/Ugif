@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_many :gifs
   
   attr_accessor :password
-  before_save :encrypt_password_and_lowercase_username
+  before_save :encrypt_password
   
   validates_confirmation_of :password
   validates :username,  presence: true, uniqueness: { case_sensitive: false }
@@ -19,8 +19,7 @@ class User < ActiveRecord::Base
     end
   end
   
-  def encrypt_password_and_lowercase_username
-    self.username = username.downcase 
+  def encrypt_password
     if password.present?
       self.salt = BCrypt::Engine.generate_salt
       self.password_hash = BCrypt::Engine.hash_secret(password, salt)

@@ -1,5 +1,5 @@
 class GifsController < ApplicationController
-  
+  before_filter :current_user
   def gif_params
     params.require(:gif).permit(:title, :gif, :descriptions)
   end
@@ -10,7 +10,7 @@ class GifsController < ApplicationController
     @gif.views = 0
     if @gif.save
       if params[:tags]
-        array = params[:tags].remove(" ").split(",")
+        array = params[:tags].downcase.remove(" ").split(",")
         array.each { |x| 
           found = Tag.where(tag:x)[0]
           if found
@@ -28,12 +28,22 @@ class GifsController < ApplicationController
       render "upload"
     end
   end
+  
   def home
-    current_user
   end
   
   def upload
     logged_in?
     @gif = Gif.new
+  end
+  
+  def view
+  
+    @gif = Gif.find(params[:id])
+    if !@gif
+      redirect_to root_url
+    end
+    @gif.views += 1
+    @gif.save
   end
 end

@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   get '/home' => 'gifs#home'
   root :to => 'gifs#home'
   
+  get '/view/:id', to: 'gifs#view'
+  
+  get '/account/:username', to: 'accounts#account'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

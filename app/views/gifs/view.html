@@ -1,0 +1,43 @@
+<div class="content">
+
+  <div class="wrapper">
+
+    <div class="preview">
+
+      <h1><%= @gif.title %></h1>
+      <img src="<%= @gif.gif.url %>">
+
+      <div class="details">
+
+        <div class="author">
+          <img> 
+          <span><%= @gif.user.username%><span>
+          <a href="/account/<%= @gif.user.username%>">View Profile</a>
+        </div>
+
+        <div class="stats">
+          <div class="view-count"><%= @gif.views%></div>
+          <span class="upvotes">34</span>
+          <span class="downvotes">2</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="description"><%= @gif.description%></div>
+
+    <ol class="comments">
+      <li class="comment">
+        <span class="author">Felix_</span>
+        <p class="text">wow.</p>
+      </li>
+      <li class="comment">
+        <span class="author">GoMatthewGo!</span>
+        <p class="text">Animatastic!</p>
+      </li>
+    </ol>
+
+  </div>
+
+</div>
