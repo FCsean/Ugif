@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem "bcrypt-ruby", :require => "bcrypt"
 gem 'puma'
 gem 'mysql2'
+gem 'paperclip'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'

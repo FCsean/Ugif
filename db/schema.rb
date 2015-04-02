@@ -11,7 +11,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150402031105) do
+ActiveRecord::Schema.define(version: 20150402061612) do
+
+  create_table "gif_tags", force: :cascade do |t|
+    t.integer  "gif_id",     limit: 4
+    t.integer  "tag_id",     limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "gif_tags", ["gif_id"], name: "index_gif_tags_on_gif_id", using: :btree
+  add_index "gif_tags", ["tag_id"], name: "index_gif_tags_on_tag_id", using: :btree
+
+  create_table "gifs", force: :cascade do |t|
+    t.integer  "user_id",          limit: 4
+    t.string   "title",            limit: 255
+    t.text     "description",      limit: 65535
+    t.integer  "views",            limit: 4
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "gif_file_name",    limit: 255
+    t.string   "gif_content_type", limit: 255
+    t.integer  "gif_file_size",    limit: 4
+    t.datetime "gif_updated_at"
+  end
+
+  add_index "gifs", ["user_id"], name: "index_gifs_on_user_id", using: :btree
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "tag",        limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "username",      limit: 255
@@ -23,4 +54,7 @@ ActiveRecord::Schema.define(version: 20150402031105) do
     t.string   "password_hash", limit: 255
   end
 
+  add_foreign_key "gif_tags", "gifs"
+  add_foreign_key "gif_tags", "tags"
+  add_foreign_key "gifs", "users"
 end

@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       else
         session[:expires_after] = Time.now + 6.hours
       end
-      redirect_to root_url, :notice => "Logged in!"
+      redirect_to root_url
     else
       flash.now.alert = "Invalid username or password"
       render "signin"
@@ -22,7 +22,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, :notice => "Logged out!"
+    redirect_to root_url
   end
 
 end

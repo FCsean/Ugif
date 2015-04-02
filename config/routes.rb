@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :sessions
   get '/signout' => 'sessions#destroy'
   
+  get 'upload' => 'gifs#upload'
+  resources :gifs
+  
   get '/home' => 'gifs#home'
   root :to => 'gifs#home'
   

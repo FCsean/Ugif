@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :gifs
+  
   attr_accessor :password
   before_save :encrypt_password_and_lowercase_username
   

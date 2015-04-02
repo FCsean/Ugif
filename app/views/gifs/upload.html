@@ -1,0 +1,20 @@
+<div class="content">
+  <h1>Upload a gif</h1>
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, :id => "flash_#{name}", :class => "error" %>
+  <% end %>
+  <%= form_for @gif, :url => gifs_path, :html => { :multipart => true, :class => "styled-form", :id=>"upload-form"} do |form| %>
+    <div class ="dropzone">
+      <p>Drag and drop your gif here.</p>
+      <%= form.file_field :gif %>
+    </div>
+    <%= form.label :title %>
+    <%= form.text_field :title %>
+    <%= label_tag :tags, "Tags (Comma Delimited)" %>
+    <%= text_field_tag :tags %>
+    <%= form.label :description %>
+    <%= form.text_area :description %>
+    <%= form.submit "Upload" %>
+  <% end %>
+  
+</div>
