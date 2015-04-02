@@ -1,7 +1,7 @@
 class GifsController < ApplicationController
   before_filter :current_user
   def gif_params
-    params.require(:gif).permit(:title, :gif, :descriptions)
+    params.require(:gif).permit(:title, :gif, :description)
   end
   
   def create
@@ -22,7 +22,7 @@ class GifsController < ApplicationController
           end
         }
       end
-      redirect_to root_url
+      redirect_to "/view/"+@gif.id.to_s
     else
       flash.now.alert = "Lacking title or gif."
       render "upload"
