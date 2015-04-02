@@ -1,0 +1,57 @@
+<div class="regular-layout container">
+
+  <nav>
+    <ul>
+      <li><a href="home.html">Recommended</a></li>
+      <% if @current_user %>
+      <li><a href="account.html">My Account</a></li>
+      <li><a href="upload.html">Upload Gif</a></li>
+      <% end %>
+    </ul>
+  </nav>
+
+  <aside>
+    <h3>Sponsors</h3>
+    <div class="ad">
+      <img src="assets/ad.png">
+      <p>Lorem ipsum</p>
+    </div>
+    <div class="ad">
+      <img src="assets/ad.png">
+      <p>Lorem ipsum</p>
+    </div>
+  </aside>
+
+  <div class="content">
+
+    <h1>Recommended for you</h1>
+    <p>We've noticed you have a certain affinity to these type of gifs...</p>
+
+    <div class="preview">
+
+      <a href="view.html">
+        <h2 class="title">A gif.</h2>
+        <div class="gif"><img src="assets/gif.gif"></div>
+      </a>
+
+      <div class="details">
+
+        <div class="author">
+          <img> 
+          <span>gopherzapper_jmsor<span>
+          <a href="profile.html">View Profile</a>
+        </div>
+
+        <div class="stats">
+          <div class="view-count">56</div>
+          <span class="upvotes">34</span>
+          <span class="downvotes">2</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

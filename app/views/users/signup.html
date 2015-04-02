@@ -1,0 +1,49 @@
+<div class="container">
+
+  <div class="form-layout">
+
+    <div class="promo-area">
+      <img src="assets/discover.png" style="width: 100%;">
+
+      <div style="position: absolute; top: 0;">
+        <h1 style="font-weight: bold;">Congratulations!</h1>
+        <h2>You have discovered Ugif.</h2>
+      </div>
+      <p style="width: 300px; position: absolute; bottom: 20px; right: 20px;">
+        Ugif is a place where you can view and
+        share all sorts of gifs. Cause for some reason
+        the 20 or so year old format just won't die yet.
+      </p>
+    </div>
+
+    <div class="form-area">
+    <%= form_for @user, :html => {:class =>"styled-form"} do |f| %>
+    <% if @user.errors.any? %>
+      <div class="error_messages">
+        <h2 class="error">Form is invalid</h2>
+        <ul>
+          <% for message in @user.errors.full_messages %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+    <%= f.label :password %>
+    <%= f.password_field :password%>
+    <%= f.label :password_confirmation, "Confirm Password" %>
+    <%= f.password_field :password_confirmation%>
+    <%= f.submit "Sign Up"%>
+    <a href="signin">Sign in</a>
+    <% end %>
+      
+    </div>
+
+  </div>
+
+</div>
+

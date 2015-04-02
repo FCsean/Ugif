@@ -1,0 +1,32 @@
+<div class="container">
+
+  <div class="form-layout">
+
+    <div class="promo-area">
+      <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+        <img src="assets/key.png" style="width: 280px;">
+        <p style="text-align: center">Oh look, a key...</p>
+      </div>
+    </div>
+
+    <div class="form-area">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash_#{name}", :class => "error" %>
+    <% end %>
+
+    <%= form_tag sessions_path , :class =>"styled-form" do %>
+      <h2>Sign in to your account</h2>
+      <%= label_tag :username %>
+      <%= text_field_tag :username, params[:username], :placeholder => "Username" %>
+      <%= label_tag :password %>
+      <%= password_field_tag :password, '', :placeholder => "Password" %>
+      <%= label_tag :remember_me, nil, :style => "display:inline;" %>
+      <%= check_box_tag :remember_me %>
+      <%= submit_tag "Sign in" %>
+      <a href="/signup">Create account</a>
+    <% end %>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ugif</title>
+  <%= javascript_include_tag "application.js" %> 
+  <%= javascript_include_tag params[:controller] %> 
+  <%= stylesheet_link_tag  'application', media: 'all' %>  
+  <%= stylesheet_link_tag  params[:controller] %>  
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="container">
+  <header>
+
+    <div class="branding">
+      <a href="home.html"><img src="/assets/logo.png"></a>
+    </div>
+
+    <div class="action-bar">
+
+      <form>
+        <label for="query">Search</label>
+        <input type="text" name="query">
+      </form>
+      <% current_user %>
+      <% if @current_user %>
+      <a href="account.html">Hello, <strong><%= @current_user.username =%>!</strong></a>
+      <% else %>
+      <a href="signin">Hello, <strong>Guest!</strong></a>
+      <% end %>
+    </div>
+
+  </header>
+  </div>
+<%= yield %>
+
+</body>
+</html>

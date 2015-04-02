@@ -1,0 +1,295 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ html { box-sizing: border-box; }
+*, *:before, *:after { box-sizing: inherit; }
+
+body {
+  margin: 0;
+  background: white;
+  font-family: "Myriad Pro", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+}
+
+.container {
+  width: 960px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+
+  height: 58px;
+  margin: 0 0 30px 0;
+}
+
+.branding {
+  flex: 0 0;
+
+  margin: 5px 10px 0 10px;
+
+  background: white;
+}
+
+.branding img {
+  width: 105px;
+}
+
+.action-bar {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  background: #ef4836;
+  border-bottom: 3px solid black;
+  padding: 5px 15px;
+}
+
+.action-bar form {
+  flex: 1;
+  align-self: flex-end;
+}
+
+.action-bar label {
+  font-size: 18px;
+  color: white;
+}
+
+.action-bar input {
+  width: 310px;
+}
+
+.action-bar a {
+  flex: 1;
+  align-self: flex-end;
+
+  text-align: right;
+  font-size: 12px;
+  color: white;
+}
+
+
+.regular-layout {
+  display: flex;
+}
+
+.regular-layout nav {
+  flex: 0 0 190px;
+  order: 1;
+
+  padding: 0 16px 0 0;
+
+  text-align: right;
+}
+
+.regular-layout nav ul {
+  list-style: none;
+}
+
+.regular-layout nav li {
+  margin: 0 0 15px 0;
+}
+
+.regular-layout nav a {
+  font-size: 18px;
+  text-decoration: none;
+  color: #ef4836;
+}
+
+.regular-layout .content {
+  flex: 1;
+  order: 2;
+
+  border-top: 2px solid #ebebeb;
+  border-left: 2px solid #ebebeb;
+  
+  padding: 15px;
+}
+
+.regular-layout aside {
+  flex: 0 0 175px;
+  order: 3;
+
+  border-top: 2px solid #ebebeb;
+  border-left: 2px solid #ebebeb;
+
+  padding: 15px 10px;
+}
+
+.regular-layout aside h3 {
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.form-layout {
+  display: flex;
+}
+
+.form-layout .promo-area {
+  flex: 1;
+  position: relative;
+}
+
+.form-layout .form-area {
+  flex: 0 0 380px;
+  border-left: 2px solid #ebebeb;
+  padding-left: 50px;
+  padding-right: 85px;
+  text-align: right;
+}
+
+.styled-form label, 
+.styled-form input[type="text"],
+.styled-form input[type="email"],
+.styled-form input[type="password"],
+.styled-form input[type="submit"] {
+  display: block;
+  margin-left: auto;
+}
+
+.styled-form input[type="text"],
+.styled-form input[type="email"],
+.styled-form input[type="password"],
+textarea {
+  width: 100%;
+  height: 45px;
+  border: 1px solid #8b8b8b;  
+  border-radius: 1px;
+  margin-bottom: 10px;
+  padding: 10px;
+  text-align: left;
+}
+
+.styled-form input[type="submit"] {
+  width: 135px;
+  height: 35px;
+  background: #ef4836;
+  border: none;
+  color: white;
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px; 
+}
+
+.styled-form a {
+  display: inline-block;
+  width: 135px;
+  height: 30px;
+  background: #323232;
+  border: none;
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  text-align: center;
+  padding: 4px;
+}
+
+.ad img {
+  width: 160px;
+}
+
+.ad p {
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.content h1 {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+
+.preview {
+  border-bottom: 2px solid #eaeaea;
+  width: 320px;
+  margin: 20px 0;
+}
+
+.preview a {
+  text-decoration: none;
+}
+
+.preview .title {
+  font-size: 18px;
+  color: black;
+}
+
+.preview .details {
+  display: flex;
+}
+
+.preview .details a {
+  color: gray;
+}
+
+.preview .details .author {
+  flex: 1;
+}
+
+.preview .details .stats {
+  flex: 1;
+  text-align: right;
+}
+
+.view-count {
+  font-weight: bold;
+}
+
+.upvotes::before {
+  content: "up: ";
+}
+
+.downvotes::before {
+  content: "down: ";
+}
+
+.wrapper {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.description {
+  margin-top: -15px;
+}
+
+.comments {
+  list-style: none;
+  padding-left: 0;
+}
+
+.comment .author {
+  font-size: 14px;
+  color: gray;
+}
+
+.comment .text {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+#upload-form .dropzone {
+  background: gray;
+  text-align: center;
+  height: 175px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
