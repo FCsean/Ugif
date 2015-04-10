@@ -29,10 +29,4 @@ class User < ActiveRecord::Base
     end
   end
   
-  def self.create_user(username, email, password, password_confirmation)
-    salt = BCrypt::Engine.generate_salt
-    password_hash = BCrypt::Engine.hash_secret(password, salt)
-    user = User.new(username: username, email:email, password_hash:password_hash, salt:salt)
-    user.save
-  end
 end
