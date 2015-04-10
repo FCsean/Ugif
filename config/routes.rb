@@ -17,6 +17,9 @@ Rails.application.routes.draw do
   
   get '/account/:username', to: 'accounts#account'
   
+  get '/search/', to: 'gifs#search'
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

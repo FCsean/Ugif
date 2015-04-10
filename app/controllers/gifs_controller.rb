@@ -53,4 +53,21 @@ class GifsController < ApplicationController
       end
     end
   end
+  
+  def search
+    @query = params[:query]
+    gifs = Gif.where("title like ? or description like ?", "%"+@query+"%", "%"+@query+"%")
+    @results = gifs.to_a
+    tags = Tag.where(tag:@query).first
+    if tags
+      tags = tags.gifs.scope
+      @results += tags.to_a
+    end
+    username = User.where(username:@query).first
+    if username
+      usernamegifs = username.gifs.scope
+      @results += usernamegifs.to_a
+    end
+      @results = @results.uniq
+  end
 end

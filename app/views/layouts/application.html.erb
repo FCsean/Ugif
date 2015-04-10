@@ -18,9 +18,9 @@
 
     <div class="action-bar">
 
-      <form>
+      <form action="/search/" method="get" name="query">
         <label for="query">Search</label>
-        <input type="text" name="query">
+        <input type="text" name="query" required="">
       </form>
       <% current_user %>
       <% if @current_user %>
@@ -40,7 +40,7 @@
     <ul>
       <li><a href="/home">Recommended</a></li>
       <% if @current_user %>
-      <li><a href="/account">My Account</a></li>
+      <li><a href="/account/<%= @current_user.username =%>">My Account</a></li>
       <li><a href="/upload">Upload Gif</a></li>
       <li><a href="/signout">Sign Out</a></li>
       <% end %>
