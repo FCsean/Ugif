@@ -252,12 +252,16 @@ textarea {
   font-weight: bold;
 }
 
+img.thumb{
+  width: 10%;
+}
+
 .upvotes::before {
-  content: "up: ";
+  /*content: "up: ";*/
 }
 
 .downvotes::before {
-  content: "down: ";
+  /*content: "down: ";*/
 }
 
 .wrapper {
@@ -285,9 +289,9 @@ textarea {
 }
 
 #upload-form .dropzone {
-  background: gray;
+  /*background: gray;*/
   text-align: center;
-  height: 175px;
+  height: 200px;
   display: flex;
   flex-direction: column;
   justify-content: center;

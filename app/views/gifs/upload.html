@@ -5,7 +5,8 @@
   <% end %>
   <%= form_for @gif, :url => gifs_path, :html => { :multipart => true, :class => "styled-form", :id=>"upload-form"} do |form| %>
     <div class ="dropzone">
-      <p>Drag and drop your gif here.</p>
+      <img src="assets/dragAndDrop.png">
+     <!-- <p>Drag and drop your gif here.</p> -->
       <%= form.file_field :gif %>
     </div>
     <%= form.label :title %>
