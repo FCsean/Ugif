@@ -6,12 +6,11 @@ class SessionsController < ApplicationController
 
   def create
     user = User.authenticate(params[:username], params[:password])
-    if user
-      session[:user_id] = user.id
+    if user   
       if params[:remember_me] == '1'
-        session[:expires_after] = Time.now + 2.weeks
+        cookies.permanent[:user_id] = user.id
       else
-        session[:expires_after] = Time.now + 6.hours
+        cookies[:user_id] = user.id
       end
       redirect_to root_url
     else
@@ -21,7 +20,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:user_id] = nil
+    cookies[:user_id] = nil
+    cookies.permanent[:user_id] = nil
     redirect_to root_url
   end
 

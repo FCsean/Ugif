@@ -6,7 +6,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   private
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    p cookies[:user_id]
+    @current_user ||= User.find(cookies[:user_id]) if cookies[:user_id] && cookies[:user_id] != ""
+    @current_user ||= User.find(cookies.permanent[:user_id]) if cookies.permanent[:user_id] && cookies[:user_id] != ""
     return @current_user
   end
   
