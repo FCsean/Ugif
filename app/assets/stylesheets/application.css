@@ -29,6 +29,10 @@ h1, h2, h3, h4, h5, h6, p {
   font-weight: normal;
 }
 
+/*h1{
+  font-family: 'Bebas Neue';
+}*/
+
 .container {
   width: 960px;
   margin: 0 auto;
@@ -253,7 +257,7 @@ textarea {
 }
 
 img.thumb{
-  width: 11%;
+  width: 9%;
 }
 
 .upvotes{

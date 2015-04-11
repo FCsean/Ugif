@@ -9,6 +9,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+
   <div class="container">
   <header>
 
@@ -48,14 +49,11 @@
   </nav>
 
   <aside>
-    <h3>Sponsors</h3>
-    <div class="ad">
-      <img src="/assets/Ad1.png">
-      <p>Start your career with one of the leading Multimedia commpanies in the industry, Creativ AVFX.</p>
+    <h3>Sponsored</h3>
+    <div class="ad", id="ad1">
     </div>
-    <div class="ad">
-      <img src="/assets/reallyAnnoyingJordanAd.gif">
-      <p>If you hate your government, it's not Jordan Powered.</p>
+
+    <div class="ad", id="ad2">
     </div>
   </aside>
 <%= yield %>
@@ -63,5 +61,40 @@
 <% else %>
 <%= yield %>
 <% end %>
+
+<script>
+document.onload = advertise();
+//Loads random advertisments onto the document
+function advertise(){
+  //Create an array of Ads
+  var ads = ["Ad1.png",
+           "reallyAnnoyingJordanAd.gif",
+           "Ad2.png",
+           "Ad3.gif"];
+  var adDesc = ["Start your career with one of the leading Multimedia companies in the industry, Creativ AVFX.",
+                "If you hate your government, it's not Jordan Powered.",
+                "Enjoy the rich aroma of minty coffee - without the insomnia.",
+                "Do not fear, the Freelance Project is here."];
+
+  var first, second;
+
+  first = Math.floor(Math.random()*ads.length);
+
+  var found = false;
+
+  while(!found){
+    second = Math.floor(Math.random()*ads.length);
+    if(first != second)
+      found = true;
+  }
+
+  console.log(first);
+  console.log(second);
+
+  document.getElementById("ad1").innerHTML = "<img src=\"/assets/" + ads[first] + "\"><p>" + adDesc[first] + "</p>";
+  document.getElementById("ad2").innerHTML = "<img src=\"/assets/" + ads[second] + "\"><p>" + adDesc[second] + "</p>";
+}
+</script>
+
 </body>
 </html>
