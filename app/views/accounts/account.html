@@ -6,17 +6,16 @@
   <% @user.gifs.each do |gif| %>
   <div class="preview">
     
-    <a href="/view/<%= gif.id %>">
-      <h2 class="title"><%= gif.title %></h2>
-      <div class="gif"><img src="<%= gif.gif.url %>"></div>
-    </a>
+    
+    <a href="/view/<%= gif.id %>"><h2 class="title"><%= gif.title %></h2></a><% if current_user == @user %><%= link_to("X","/delete/"+gif.id.to_s,method: :delete, data: {confirm: "Delete?"}, class: :"delete") %><% end %>
+    <div class="gif"><a href="/view/<%= gif.id %>"><img src="<%= gif.gif.url %>"></a></div>
+    
 
     <div class="details">
 
       <div class="author">
         <img> 
-        <span><%= @user.username%></span>
-        <a href="/account/<%= @user.username %>">View Profile</a>
+        <span><a href="/account/<%= @user.username %>"><%= @user.username%></a></span>
       </div>
 
       <div class="stats">

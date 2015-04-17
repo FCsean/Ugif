@@ -1,26 +1,27 @@
 Rails.application.routes.draw do
   
-  get '/signup' => 'users#signup'
+  get 'signup' => 'users#signup'
   resources :users
   
-  get '/signin' => 'sessions#signin'
+  get 'signin' => 'sessions#signin'
   resources :sessions
-  get '/signout' => 'sessions#destroy'
+  get 'signout' => 'sessions#destroy'
   
   get 'upload' => 'gifs#upload'
   resources :gifs
   
-  get '/home' => 'gifs#home'
+  get 'home' => 'gifs#home'
   root :to => 'gifs#home'
   
-  get '/view/:id', to: 'gifs#view'
+  get 'view/:id' => 'gifs#view'
   
-  get '/account/:username', to: 'accounts#account'
+  get 'account/:username'  => 'accounts#account'
   
-  get '/search/', to: 'gifs#search'
+  get 'search' => 'gifs#search'
   
-  post '/comment/', to: 'gifs#comment'
+  post 'comment' => 'gifs#comment'
 
+  delete 'delete/:id' => 'gifs#delete'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,9 +1,9 @@
 class Gif < ActiveRecord::Base
   belongs_to :user
-  has_many :gif_tags
+  has_many :gif_tags, dependent: :destroy
   has_many :tags, :through => :gif_tags
-  has_many :watcheds
-  has_many :comments
+  has_many :watcheds, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_many :watchers, :through => :watcheds, :source => :user
   has_many :user_comments, :through => :comments, :source => :user
   has_attached_file :gif,
