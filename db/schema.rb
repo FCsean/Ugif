@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150403004914) do
+ActiveRecord::Schema.define(version: 20150417020741) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "gif_id",     limit: 4
+    t.text     "comment",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "comments", ["gif_id"], name: "index_comments_on_gif_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "gif_tags", force: :cascade do |t|
     t.integer  "gif_id",     limit: 4
@@ -64,6 +75,8 @@ ActiveRecord::Schema.define(version: 20150403004914) do
   add_index "watcheds", ["gif_id"], name: "index_watcheds_on_gif_id", using: :btree
   add_index "watcheds", ["user_id"], name: "index_watcheds_on_user_id", using: :btree
 
+  add_foreign_key "comments", "gifs"
+  add_foreign_key "comments", "users"
   add_foreign_key "gif_tags", "gifs"
   add_foreign_key "gif_tags", "tags"
   add_foreign_key "gifs", "users"

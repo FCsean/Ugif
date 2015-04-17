@@ -3,7 +3,9 @@ class Gif < ActiveRecord::Base
   has_many :gif_tags
   has_many :tags, :through => :gif_tags
   has_many :watcheds
+  has_many :comments
   has_many :watchers, :through => :watcheds, :source => :user
+  has_many :user_comments, :through => :comments, :source => :user
   has_attached_file :gif,
                   :url => "/assets/:class/:id/:attachment/:style.:extension",
                   :path => ":rails_root/public/assets/:class/:id/:attachment/:style.:extension"

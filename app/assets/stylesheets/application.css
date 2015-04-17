@@ -301,7 +301,7 @@ img.thumb{
   margin-bottom: 0px;
 }
 
-.addComment button{
+.addComment input[type=submit]{
   border: 0;
   color: #F0F0F0;
   background-color: #EF4836 ;

@@ -40,6 +40,7 @@ class GifsController < ApplicationController
   def view
   
     @gif = Gif.find(params[:id])
+    @comments = @gif.comments.to_a
     if !@gif
       redirect_to root_url
     end
@@ -58,10 +59,13 @@ class GifsController < ApplicationController
     @query = params[:query]
     gifs = Gif.where("title like ? or description like ?", "%"+@query+"%", "%"+@query+"%")
     @results = gifs.to_a
-    tags = Tag.where(tag:@query).first
-    if tags
-      tags = tags.gifs.scope
-      @results += tags.to_a
+    words = @query.downcase.remove(",").split(" ")
+    words.each do |word|
+      tags = Tag.where(tag:word).first
+      if tags
+        tags = tags.gifs.scope
+        @results += tags.to_a
+      end
     end
     username = User.where(username:@query).first
     if username
@@ -69,5 +73,21 @@ class GifsController < ApplicationController
       @results += usernamegifs.to_a
     end
       @results = @results.uniq
+  end
+  
+  def comment
+    comment = params[:comment]
+    gifid = params[:gifid]
+    if !current_user
+      redirect_to '/signin'
+    else
+      com = Comment.new()
+      com.comment = comment
+      com.gif = Gif.find(gifid)
+      com.user = current_user
+      com.save
+      redirect_to '/view/'+gifid
+    end
+    
   end
 end

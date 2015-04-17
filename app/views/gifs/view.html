@@ -11,7 +11,7 @@
 
         <div class="author">
           <img> 
-          <span><%= @gif.user.username%><span>
+          <span><%= @gif.user.username %><span>
           <a href="/account/<%= @gif.user.username%>">View Profile</a>
         </div>
 
@@ -27,23 +27,24 @@
 
     </div>
 
-    <div class="description"><%= @gif.description%></div>
+    <div class="description"><%= @gif.description %></div>
 
     <div class="addComment">
+    <%= form_tag "/comment/" do %>
       Share your thoughts:
-      <textarea rows="2"></textarea>
-      <button type="button">Post</button>
+      <input type="hidden" name="gifid" value="<%= @gif.id %>">
+      <textarea rows="2" name="comment"></textarea>
+      <input type="submit" value="Post">
+    <% end %>
     </div>
 
     <ol class="comments">
+      <% @comments.each do |comment| %>
       <li class="comment">
-        <span class="author">Felix_</span>
-        <p class="text">wow.</p>
+        <span class="author"><%= comment.user.username %></span>
+        <p class="text"><%= comment.comment %></p>
       </li>
-      <li class="comment">
-        <span class="author">GoMatthewGo!</span>
-        <p class="text">Animatastic!</p>
-      </li>
+      <% end %>
     </ol>
 
   </div>
