@@ -30,6 +30,12 @@ class GifsController < ApplicationController
   end
   
   def home
+   if current_user
+    #To be updated
+    @gifs = Gif.order("views desc").limit(10)
+   else
+    @gifs = Gif.order("views desc").limit(10)
+   end
   end
   
   def upload
@@ -77,17 +83,29 @@ class GifsController < ApplicationController
   
   def comment
     comment = params[:comment]
-    gifid = params[:gifid]
+    gif_id = params[:gifid]
     if !current_user
       redirect_to '/signin'
     else
       com = Comment.new()
       com.comment = comment
-      com.gif = Gif.find(gifid)
+      com.gif = Gif.find(gif_id)
       com.user = current_user
       com.save
-      redirect_to '/view/'+gifid
+      redirect_to '/view/'+gif_id
     end
-    
   end
+  
+  def delete
+    if current_user      
+      gif = Gif.find(params[:id])
+      if gif.user == current_user
+        gif.destroy
+      end
+      redirect_to '/account/'+current_user.username
+    else
+      redirect_to '/signin'
+    end
+  end
+  
 end

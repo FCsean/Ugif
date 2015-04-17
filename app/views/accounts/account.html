@@ -3,31 +3,30 @@
   <h1>View User Profile</h1>
   <h2><%= @user.username %></h2>
   
-  <% @user.gifs.each{ |gif| %>
+  <% @user.gifs.each do |gif| %>
   <div class="preview">
     
-    <a href="/view/<%= gif.id %>">
-      <h2 class="title"><%= gif.title %></h2>
-      <div class="gif"><img src="<%= gif.gif.url %>"></div>
-    </a>
+    
+    <a href="/view/<%= gif.id %>"><h2 class="title"><%= gif.title %></h2></a><% if current_user == @user %><%= link_to("X","/delete/"+gif.id.to_s,method: :delete, data: {confirm: "Delete?"}, class: :"delete") %><% end %>
+    <div class="gif"><a href="/view/<%= gif.id %>"><img src="<%= gif.gif.url %>"></a></div>
+    
 
     <div class="details">
 
       <div class="author">
         <img> 
-        <span><%= @user.username%></span>
-        <a href="/account/<%= @user.username %>">View Profile</a>
+        <span><a href="/account/<%= @user.username %>"><%= @user.username%></a></span>
       </div>
 
       <div class="stats">
         <div class="view-count"><%= gif.views %> hits</div>
-        <span class="upvotes"><img src="/assets/up.png", title="I Like this", class = "thumb"> 34</span>
-        <span class="downvotes"><img src="/assets/down.png", title="I dislike this", class = "thumb"> 2</span>
+        <span class="upvotes"><img src="/assets/up.png" title="I Like this" class="thumb"> 34</span>
+        <span class="downvotes"><img src="/assets/down.png" title="I dislike this" class="thumb"> 2</span>
       </div>
 
     </div>
   </div>
-  <% } %>
+  <% end %>
 
 </div>
 

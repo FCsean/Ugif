@@ -233,6 +233,7 @@ textarea {
 .preview .title {
   font-size: 18px;
   color: black;
+  display: inline;
 }
 
 .preview .details {
@@ -319,4 +320,12 @@ img.thumb{
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.gif{
+  margin-top:5px;
+}
+
+.delete{
+  margin-left: 3px;
 }
