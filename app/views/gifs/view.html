@@ -18,11 +18,11 @@
           <div class="view-count"><%= @gif.views%> hits</div>
           <span class="upvotes">
 			<%= link_to("/like/" + @gif.id.to_s, method: :post) do%><img src="/assets/up.png", title="I Like this", class = "thumb"><% end %>
-			34
+			<%= @gif.num_likes %>
 		  </span>
           <span class="downvotes">
 			<%= link_to("/dislike/" + @gif.id.to_s, method: :post) do%><img src="/assets/down.png", title="I dislike this", class = "thumb", src="assets/down.png"><% end %>
-			2
+			<%= @gif.num_dislikes %>
 		  </span>
         </div>
 

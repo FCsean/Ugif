@@ -96,6 +96,30 @@ class GifsController < ApplicationController
     end
   end
   
+  def like
+	gif = Gif.find(params[:id])
+    if !current_user
+      redirect_to '/signin'
+    else
+	  like = Like.find_or_initialize_by(user: current_user, gif: gif)
+	  like.updown = if like.updown != 1 then 1 else 0 end
+	  like.save
+	  redirect_to '/view/'+params[:id]
+    end
+  end
+  
+  def dislike
+	gif = Gif.find(params[:id])
+    if !current_user
+      redirect_to '/signin'
+    else
+	  like = Like.find_or_initialize_by(user: current_user, gif: gif)
+	  like.updown = if like.updown != -1 then -1 else 0 end
+	  like.save
+	  redirect_to '/view/'+params[:id]
+    end
+  end
+    
   def delete
     if current_user      
       gif = Gif.find(params[:id])

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150417020741) do
+ActiveRecord::Schema.define(version: 20150417225023) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -49,6 +49,17 @@ ActiveRecord::Schema.define(version: 20150417020741) do
 
   add_index "gifs", ["user_id"], name: "index_gifs_on_user_id", using: :btree
 
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "gif_id",     limit: 4
+    t.integer  "updown",     limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "likes", ["gif_id"], name: "index_likes_on_gif_id", using: :btree
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
+
   create_table "tags", force: :cascade do |t|
     t.string   "tag",        limit: 255
     t.datetime "created_at",             null: false
@@ -80,6 +91,8 @@ ActiveRecord::Schema.define(version: 20150417020741) do
   add_foreign_key "gif_tags", "gifs"
   add_foreign_key "gif_tags", "tags"
   add_foreign_key "gifs", "users"
+  add_foreign_key "likes", "gifs"
+  add_foreign_key "likes", "users"
   add_foreign_key "watcheds", "gifs"
   add_foreign_key "watcheds", "users"
 end

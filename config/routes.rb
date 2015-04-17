@@ -11,9 +11,12 @@ Rails.application.routes.draw do
   resources :gifs
   
   get 'home' => 'gifs#home'
-  root :to => 'gifs#home'
+  root 'gifs#home'
   
   get 'view/:id' => 'gifs#view'
+  post 'like/:id' => 'gifs#like'
+  post 'dislike/:id' => 'gifs#dislike'
+  
   
   get 'account/:username'  => 'accounts#account'
   

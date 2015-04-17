@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :gifs
   
   has_many :watcheds
+  has_many :likes
   has_many :comments
   has_many :have_watched, :through => :watcheds, :source => :gif
   has_many :gif_comments, :through => :comments, :source => :gif
