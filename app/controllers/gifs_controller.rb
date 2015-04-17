@@ -30,6 +30,10 @@ class GifsController < ApplicationController
   end
   
   def home
+   if current_user
+   else
+    @gifs = Gif.order("views desc").limit(10)
+   end
   end
   
   def upload
