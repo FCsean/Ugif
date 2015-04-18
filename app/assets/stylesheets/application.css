@@ -219,6 +219,9 @@ textarea {
   font-weight: bold;
 }
 
+.full {
+  width: 100% !important;
+}
 
 .preview {
   border-bottom: 2px solid #eaeaea;
@@ -300,6 +303,9 @@ img.thumb{
 
 .addComment textarea{
   margin-bottom: 0px;
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 100px;
 }
 
 .addComment input[type=submit]{
