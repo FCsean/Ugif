@@ -31,8 +31,19 @@ class GifsController < ApplicationController
   
   def home
    if current_user
-    #To be updated
-    @gifs = Gif.order("views desc").limit(10)
+   
+    good_tags = current_user.likes.where(updown: 1).flat_map(&:gif).flat_map(&:tags).map(&:tag)
+    bad_tags = current_user.likes.where(updown: -1).flat_map(&:gif).flat_map(&:tags).map(&:tag)
+   
+    score = Hash.new(0)
+    good_tags.each { |tag| score[tag] += 1 }
+    bad_tags.each { |tag| score[tag] -= 1 }
+    ts = score.select{ |k, v| v > 0 }.keys
+     
+    @gifs = Tag.where(tag: ts).flat_map(&:gif_tags).map(&:gif).uniq.shuffle.take(10)
+    if @gifs.empty?
+      @gifs = Gif.order("views desc").limit(10)
+    end
    else
     @gifs = Gif.order("views desc").limit(10)
    end
