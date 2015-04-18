@@ -55,20 +55,23 @@ class GifsController < ApplicationController
   end
   
   def view
-  
-    @gif = Gif.find(params[:id])
-    @comments = @gif.comments.to_a
-    if !@gif
-      redirect_to root_url
-    end
-    @gif.views += 1
-    @gif.save
-    
-    user = current_user
-    if user
-      if user.have_watched.where(id:@gif.id).length == 0
-        user.have_watched << @gif
+    begin
+      @gif = Gif.find(params[:id])
+      @comments = @gif.comments.to_a
+      if !@gif
+        redirect_to root_url
       end
+      @gif.views += 1
+      @gif.save
+      
+      user = current_user
+      if user
+        if user.have_watched.where(id:@gif.id).length == 0
+          user.have_watched << @gif
+        end
+      end
+    rescue
+      redirect_to root_url
     end
   end
   
