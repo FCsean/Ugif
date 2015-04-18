@@ -46,7 +46,7 @@ header {
 }
 
 .branding {
-  flex: 0 0;
+  flex: 0 0 auto;
 
   margin: 5px 10px 0 10px;
 
